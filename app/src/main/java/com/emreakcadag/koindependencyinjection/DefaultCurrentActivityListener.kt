@@ -13,7 +13,8 @@ interface CurrentActivityListener {
 /**
  * Since many have to implement this, then create a default class
  */
-class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks, CurrentActivityListener {
+class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks,
+    CurrentActivityListener {
     override var currentActivity: Activity? = null
     lateinit var context: Context
     protected var currentActivityStack: MutableList<Activity> = ArrayList()

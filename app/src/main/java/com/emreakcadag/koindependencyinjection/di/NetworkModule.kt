@@ -5,7 +5,6 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.BuildConfig
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -31,9 +30,7 @@ val networkModule = module {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
-        if (BuildConfig.DEBUG) {
-            client.addInterceptor(get<HttpLoggingInterceptor>())
-        }
+
 
         client.build()
     }
@@ -55,13 +52,3 @@ val networkModule = module {
         get<Retrofit>().create(NASAAPIInterface::class.java)
     }
 }
-
-/*val coroutines = module {
-    single(named("Background")) { Dispatchers.Default }
-    single(named("IO")) { Dispatchers.IO }
-    single(named("UI")) { Dispatchers.Main }
-
-    factory(named("name")){
-
-    }
-}*/
