@@ -1,7 +1,7 @@
 package com.emreakcadag.koindependencyinjection
 
 import com.emreakcadag.koindependencyinjection.di.networkModule
-import com.emreakcadag.koindependencyinjection.network.NASAAPIInterface
+import com.emreakcadag.koindependencyinjection.feature.NASAAPIInterface
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import org.junit.After

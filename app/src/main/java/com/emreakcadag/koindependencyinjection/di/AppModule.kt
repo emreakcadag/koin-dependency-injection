@@ -2,7 +2,7 @@ package com.emreakcadag.koindependencyinjection.di
 
 import com.emreakcadag.koindependencyinjection.ActivityRetriever
 import com.emreakcadag.koindependencyinjection.DefaultCurrentActivityListener
-import com.emreakcadag.koindependencyinjection.MainViewModel
+import com.emreakcadag.koindependencyinjection.feature.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

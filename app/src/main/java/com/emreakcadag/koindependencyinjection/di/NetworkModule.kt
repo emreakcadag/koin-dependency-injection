@@ -1,6 +1,6 @@
 package com.emreakcadag.koindependencyinjection.di
 
-import com.emreakcadag.koindependencyinjection.network.NASAAPIInterface
+import com.emreakcadag.koindependencyinjection.feature.NASAAPIInterface
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
 
     // https://api.nasa.gov/planetary/apod?api_key=SzVivPLHN7PCYZKtD3PupYZWeKPGTVS0Tx9F2VNh
-    single(named("BASE_URL")) { "https://api.nasa.gov/plantary/" }
+    single(named("BASE_URL")) { "https://api.nasa.gov/planetary/" }
 
     single {
         val interceptor = HttpLoggingInterceptor.Level.BODY

@@ -8,7 +8,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class SpaceApp : Application() {
+class MyApp : Application() {
 
     private val defaultCurrentActivityListener: DefaultCurrentActivityListener by inject()
 
@@ -16,7 +16,7 @@ class SpaceApp : Application() {
         super.onCreate()
         startKoin {
             androidLogger()
-            androidContext(this@SpaceApp)
+            androidContext(this@MyApp)
             modules(listOf(networkModule, appModule))
         }
 

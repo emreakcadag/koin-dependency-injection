@@ -1,4 +1,4 @@
-package com.emreakcadag.koindependencyinjection.network
+package com.emreakcadag.koindependencyinjection.feature
 
 import com.squareup.moshi.Json
 

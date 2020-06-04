@@ -1,9 +1,9 @@
-package com.emreakcadag.koindependencyinjection
+package com.emreakcadag.koindependencyinjection.feature
 
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.emreakcadag.koindependencyinjection.network.PhotoResponse
+import com.emreakcadag.koindependencyinjection.ActivityRetriever
+import com.emreakcadag.koindependencyinjection.GlideApp
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.koin.core.KoinComponent
@@ -15,23 +15,25 @@ import org.koin.core.inject
  */
 
 class DailyPhotoView(
-    private val mainView: ViewGroup,
-    viewModel: MainViewModel
-) : MainView, KoinComponent, LayoutContainer {
+    private val mainView: ViewGroup
+) : EventHandler, KoinComponent, LayoutContainer {
 
     private val activityRetriever: ActivityRetriever by inject()
+    private val viewModel: MainViewModel by inject()
 
     override val containerView: View? get() = mainView
 
     init {
-        viewModel.view = this
+        viewModel.eventHandler = this
         viewModel.getDailyPhoto()
     }
 
     override fun setDailyPhoto(dailyPhoto: PhotoResponse?) {
-        mainView.run {
-            Glide.with(activityRetriever.context)
-                .load(dailyPhoto?.url)
+        containerView?.run {
+            GlideApp
+                .with(activityRetriever.context)
+                .load("https://media-exp1.licdn.com/dms/image/C4E03AQEBTtu3QMz3cw/profile-displayphoto-shrink_200_200/0?e=1596672000&v=beta&t=pDDdZBahN7eYLQczTeKI6up93GIUPI-o9qTpbzNEhwI")
+                // .load(dailyPhoto?.url)
                 .into(nasaImage)
 
             date.text = dailyPhoto?.date
